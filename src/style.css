@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-main text-white font-sans overflow-hidden;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    @apply bg-main;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-main border-l border-white/10;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-zinc-800 border border-main rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-acid;
+  }
+}
+
+.font-mono-num {
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
