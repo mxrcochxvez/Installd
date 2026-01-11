@@ -1,6 +1,6 @@
 [package]
 name = "installd"
-version = "0.0.1-alpha"
+version = "0.0.1"
 description = "Software Remover & FOSS Downloader"
 authors = ["Marco"]
 edition = "2021"
