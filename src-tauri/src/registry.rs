@@ -60,11 +60,41 @@ fn parse_software_entry(key: &RegKey) -> Option<InstalledSoftware> {
     let name: String = key.get_value("DisplayName").ok()?;
 
     // Skip system components and updates
-    if name.is_empty()
-        || name.starts_with("KB")
-        || name.contains("Security Update")
-        || name.contains("Hotfix")
-    {
+    if name.is_empty() || name.starts_with("KB") {
+        return None;
+    }
+
+    // Filter out common system components, drivers, and runtimes
+    let skip_terms = [
+        "Security Update",
+        "Hotfix",
+        "Microsoft Visual C++",
+        "Redistributable",
+        ".NET",
+        "Framework",
+        "Driver",
+        "SDK",
+        "Language Pack",
+        "MUI",
+        "Service",
+        "Update", // Be careful with this one, but usually safe for "Update for..."
+        "Runtime",
+        "PhysX",
+        "DirectX",
+        "Vulkan",
+        "WinRT",
+        "Intellisense",
+        "Application Verifier",
+        "Certification Kit",
+        "Development Kit",
+        "vs_",
+        "WinAppDeploy",
+        "Universal CRT",
+        "WinDirStat",
+        "vcpp",
+    ];
+
+    if skip_terms.iter().any(|term| name.contains(term)) {
         return None;
     }
 
