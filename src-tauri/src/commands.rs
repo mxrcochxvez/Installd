@@ -94,11 +94,18 @@ fn run_uninstaller(program: &str, args: &[String]) -> Result<String, String> {
 fn run_elevated(program: &str, args: &[String]) -> Result<String, String> {
     // Use PowerShell Start-Process with -Verb RunAs for elevation
     let args_str = args.join(" ");
-    let ps_command = format!(
-        "Start-Process -FilePath '{}' -ArgumentList '{}' -Verb RunAs",
-        program.replace("'", "''"),
-        args_str.replace("'", "''")
-    );
+    let ps_command = if args_str.is_empty() {
+        format!(
+            "Start-Process -FilePath '{}' -Verb RunAs",
+            program.replace("'", "''")
+        )
+    } else {
+        format!(
+            "Start-Process -FilePath '{}' -ArgumentList '{}' -Verb RunAs",
+            program.replace("'", "''"),
+            args_str.replace("'", "''")
+        )
+    };
 
     match Command::new("powershell")
         .args(["-Command", &ps_command])
