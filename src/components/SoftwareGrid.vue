@@ -231,7 +231,7 @@ onMounted(() => {
                v-for="item in filteredSoftware" 
                :key="item.software.name"
                @click="selectSoftware(item)"
-               class="group relative bg-surface border border-white/10 p-4 hover:border-acid/50 hover:bg-surfaceHighlight transition-all cursor-pointer h-32 flex flex-col justify-between"
+               class="group relative bg-surface border border-white/10 p-4 hover:border-acid/50 hover:bg-surfaceHighlight transition-all cursor-pointer h-full min-h-[8rem] flex flex-col justify-between"
                :class="{'ring-1 ring-acid border-acid': selectedSoftware?.software.name === item.software.name}"
              >
                 <div class="flex items-start justify-between">

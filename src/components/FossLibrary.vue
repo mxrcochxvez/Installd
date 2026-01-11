@@ -172,7 +172,7 @@ onMounted(() => {
           <div 
              v-for="pkg in displayedLibraryPackages"
              :key="pkg.id"
-             class="group relative bg-surface border border-white/10 p-5 hover:border-acid/50 hover:bg-surfaceHighlight transition-all flex flex-col justify-between h-48"
+             class="group relative bg-surface border border-white/10 p-5 hover:border-acid/50 hover:bg-surfaceHighlight transition-all flex flex-col justify-between h-full min-h-[12rem]"
           >
              <div>
                 <div class="flex items-start justify-between mb-3">

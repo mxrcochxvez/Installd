@@ -25,6 +25,7 @@ function close() {
   <div data-tauri-drag-region class="h-10 bg-main border-b border-white/10 flex justify-between items-center select-none z-50">
     <!-- Window Title -->
     <div class="px-4 flex items-center gap-2 pointer-events-none">
+       <div class="w-3 h-3 bg-acid rounded-sm"></div>
        <span class="text-xs font-mono text-dim uppercase tracking-wider">Installd // {{ title }}</span>
     </div>
 
